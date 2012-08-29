@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'csair.ui'
 **
-** Created: Tue Aug 28 22:27:04 2012
+** Created: Wed Aug 29 11:37:47 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -23,7 +23,6 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QStatusBar>
 #include <QtGui/QTabWidget>
-#include <QtGui/QTableWidget>
 #include <QtGui/QToolBar>
 #include <QtGui/QWidget>
 #include <datetext.h>
@@ -43,8 +42,6 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *query;
     QTabWidget *tabWidget;
-    QWidget *tab;
-    QTableWidget *tableWidget;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -100,30 +97,6 @@ public:
         tabWidget->setUsesScrollButtons(true);
         tabWidget->setDocumentMode(false);
         tabWidget->setTabsClosable(false);
-        tab = new QWidget();
-        tab->setObjectName(QString::fromUtf8("tab"));
-        tableWidget = new QTableWidget(tab);
-        if (tableWidget->columnCount() < 6)
-            tableWidget->setColumnCount(6);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(4, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(5, __qtablewidgetitem5);
-        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setGeometry(QRect(0, 0, 611, 301));
-        tableWidget->setLineWidth(1);
-        tableWidget->setAutoScrollMargin(16);
-        tableWidget->setIconSize(QSize(0, 0));
-        tableWidget->setSortingEnabled(false);
-        tabWidget->addTab(tab, QString());
         csAirClass->setCentralWidget(centralWidget);
         label->raise();
         depart->raise();
@@ -145,7 +118,7 @@ public:
 
         depart->setCurrentIndex(0);
         arrive->setCurrentIndex(0);
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(-1);
 
 
         QMetaObject::connectSlotsByName(csAirClass);
@@ -186,19 +159,6 @@ public:
         dateText->setText(QString());
         dateText->setPlaceholderText(QString());
         query->setText(QApplication::translate("csAirClass", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("csAirClass", "\350\210\252\347\217\255\345\217\267", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("csAirClass", "\345\207\272\345\217\221/\346\212\265\350\276\276\346\227\266\351\227\264", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem2 = tableWidget->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("csAirClass", "\351\243\236\346\234\272\345\236\213\345\217\267", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem3 = tableWidget->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("csAirClass", "\345\244\264\347\255\211\350\210\261", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem4 = tableWidget->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("csAirClass", "\345\225\206\345\212\241\350\210\261", 0, QApplication::UnicodeUTF8));
-        QTableWidgetItem *___qtablewidgetitem5 = tableWidget->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("csAirClass", "\347\273\217\346\265\216\350\210\261", 0, QApplication::UnicodeUTF8));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QString());
     } // retranslateUi
 
 };

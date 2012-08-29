@@ -9,10 +9,14 @@ class DateText : public QLineEdit
 {
 	Q_OBJECT
 public:
-	DateText(QWidget * parent = 0);
-	void mousePressEvent(QMouseEvent *e);
+	DateText(QWidget * parent = 0):QLineEdit(parent){};
+	void DateText::mousePressEvent(QMouseEvent *e){
+	if(e->button() == Qt::LeftButton)
+		emit dateTextClick();
+}
 signals:
 	void dateTextClick();
+
 };
 
 #endif

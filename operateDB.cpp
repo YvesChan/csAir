@@ -76,7 +76,7 @@ bool createDB(QString date){
 			for(int k = 0; k < 8; k ++){
 				int num = rand() % 9000 + 1000;     //flight number
 				int dept = 8 + k * 2;              //departure time
-				int arrt = dept + totalt;          //arrive time
+				int arrt = (dept + totalt) % 25;          //arrive time
 				int pri = (rand() % 20) * 100 + 2000;    //price of A cabin
 				flight = doc.createElement("flight");
 				arrCity.appendChild(flight);
@@ -128,14 +128,15 @@ bool createDB(QString date){
 		}
 	}
 
+	//save the dom tree into xml file
 	QTextStream out(&file);
-	//out.setCodec("UTF-8");
 	doc.save(out,4);
 	file.close();
 
 	return true;
 }
 
+//API for query datebase
 bool queryDB(const QString &dep, const QString &arr, const QDate &date, QDomElement* &elem){
 	QDomDocument doc;
 	QFile file("Resources\\" + date.toString("yyyy-MM-dd") + ".xml");
@@ -143,8 +144,9 @@ bool queryDB(const QString &dep, const QString &arr, const QDate &date, QDomElem
 	if(!doc.setContent(&file))return false;
 	QDomNode root = doc.documentElement();
 	QDomElement ret;
-	for(ret = root.firstChildElement(); ret.attribute("name") != dep; ret.nextSiblingElement());
-	for(ret = ret.firstChildElement(); ret.attribute("name") != arr; ret.nextSiblingElement());
+	//search for the goal flights and return the DOM subtree as a parameter
+	for(ret = root.firstChildElement(); ret.attribute("name") != dep; ret = ret.nextSiblingElement());
+	for(ret = ret.firstChildElement(); ret.attribute("name") != arr; ret = ret.nextSiblingElement());
 	if(ret.isNull())return false;
 	elem = new QDomElement(ret);
 	return true;
