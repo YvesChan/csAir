@@ -3,6 +3,7 @@
 
 #include <QtGui/QMainWindow>
 #include "ui_csair.h"
+#include <QTableWidgetItem>
 
 class csAir : public QMainWindow
 {
@@ -19,9 +20,26 @@ signals:
 		void findClick();
 		void dateClicked(const QDate &date);
 		void queryClicked();
+		void booked(QTableWidgetItem*);
+		void tabChanged(int index);
+		//void test(QTableWidgetItem*);
+
 private:
 	Ui::csAirClass ui;
+	bool isBook;
+	QTableWidgetItem* bookedItem;
+	QTableWidget* tableWidget;
 };
+/*
+class grid : public QWidget
+{
+	Q_OBJECT
 
+public:
+	grid(QString);
+
+signals:
+	void radioClicked();
+	*/
 
 #endif // CSAIR_H

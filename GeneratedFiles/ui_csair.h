@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'csair.ui'
 **
-** Created: Wed Aug 29 11:37:47 2012
+** Created: Thu Aug 30 09:05:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -42,6 +42,7 @@ public:
     QCalendarWidget *calendarWidget;
     QPushButton *query;
     QTabWidget *tabWidget;
+    QPushButton *book;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -58,26 +59,26 @@ public:
         label->setGeometry(QRect(20, 10, 51, 21));
         depart = new QComboBox(centralWidget);
         depart->setObjectName(QString::fromUtf8("depart"));
-        depart->setGeometry(QRect(70, 10, 69, 22));
+        depart->setGeometry(QRect(70, 10, 61, 22));
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(170, 10, 51, 21));
+        label_2->setGeometry(QRect(160, 10, 51, 21));
         arrive = new QComboBox(centralWidget);
         arrive->setObjectName(QString::fromUtf8("arrive"));
-        arrive->setGeometry(QRect(220, 10, 69, 22));
+        arrive->setGeometry(QRect(210, 10, 61, 22));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(330, 10, 54, 21));
+        label_3->setGeometry(QRect(300, 10, 54, 21));
         dateText = new DateText(centralWidget);
         dateText->setObjectName(QString::fromUtf8("dateText"));
         dateText->setEnabled(true);
-        dateText->setGeometry(QRect(380, 10, 91, 20));
+        dateText->setGeometry(QRect(350, 10, 81, 20));
         dateText->setEchoMode(QLineEdit::Normal);
         dateText->setReadOnly(true);
         calendarWidget = new QCalendarWidget(centralWidget);
         calendarWidget->setObjectName(QString::fromUtf8("calendarWidget"));
         calendarWidget->setEnabled(true);
-        calendarWidget->setGeometry(QRect(300, 30, 241, 171));
+        calendarWidget->setGeometry(QRect(270, 30, 241, 171));
         calendarWidget->setMinimumDate(QDate(2012, 8, 27));
         calendarWidget->setMaximumDate(QDate(2012, 9, 27));
         calendarWidget->setFirstDayOfWeek(Qt::Sunday);
@@ -87,7 +88,7 @@ public:
         calendarWidget->setDateEditAcceptDelay(1500);
         query = new QPushButton(centralWidget);
         query->setObjectName(QString::fromUtf8("query"));
-        query->setGeometry(QRect(520, 10, 71, 23));
+        query->setGeometry(QRect(460, 10, 61, 23));
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(0, 40, 611, 341));
@@ -97,6 +98,9 @@ public:
         tabWidget->setUsesScrollButtons(true);
         tabWidget->setDocumentMode(false);
         tabWidget->setTabsClosable(false);
+        book = new QPushButton(centralWidget);
+        book->setObjectName(QString::fromUtf8("book"));
+        book->setGeometry(QRect(540, 10, 61, 23));
         csAirClass->setCentralWidget(centralWidget);
         label->raise();
         depart->raise();
@@ -107,6 +111,7 @@ public:
         query->raise();
         tabWidget->raise();
         calendarWidget->raise();
+        book->raise();
         mainToolBar = new QToolBar(csAirClass);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
         csAirClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
@@ -159,6 +164,7 @@ public:
         dateText->setText(QString());
         dateText->setPlaceholderText(QString());
         query->setText(QApplication::translate("csAirClass", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
+        book->setText(QApplication::translate("csAirClass", "\351\242\204\350\256\242", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

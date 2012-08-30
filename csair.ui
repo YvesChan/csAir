@@ -35,7 +35,7 @@
      <rect>
       <x>70</x>
       <y>10</y>
-      <width>69</width>
+      <width>61</width>
       <height>22</height>
      </rect>
     </property>
@@ -96,7 +96,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>160</x>
       <y>10</y>
       <width>51</width>
       <height>21</height>
@@ -109,9 +109,9 @@
    <widget class="QComboBox" name="arrive">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>210</x>
       <y>10</y>
-      <width>69</width>
+      <width>61</width>
       <height>22</height>
      </rect>
     </property>
@@ -172,7 +172,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>300</x>
       <y>10</y>
       <width>54</width>
       <height>21</height>
@@ -188,9 +188,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>350</x>
       <y>10</y>
-      <width>91</width>
+      <width>81</width>
       <height>20</height>
      </rect>
     </property>
@@ -213,7 +213,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>270</x>
       <y>30</y>
       <width>241</width>
       <height>171</height>
@@ -252,9 +252,9 @@
    <widget class="QPushButton" name="query">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>460</x>
       <y>10</y>
-      <width>71</width>
+      <width>61</width>
       <height>23</height>
      </rect>
     </property>
@@ -296,6 +296,19 @@
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="book">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>10</y>
+      <width>61</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>预订</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>depart</zorder>
    <zorder>label_2</zorder>
@@ -305,6 +318,7 @@
    <zorder>query</zorder>
    <zorder>tabWidget</zorder>
    <zorder>calendarWidget</zorder>
+   <zorder>book</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

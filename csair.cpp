@@ -5,6 +5,9 @@
 #include <QDomElement>
 #include <QMessageBox>
 #include <QTableWidget>
+#include <Qt>
+#include <QTabWidget>
+#include <QComboBox>
 
 csAir::csAir(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -21,10 +24,13 @@ csAir::csAir(QWidget *parent, Qt::WFlags flags)
 	dt.setDate(d.currentDate());
 	ui.calendarWidget->setMinimumDate(dt.date());
 	ui.calendarWidget->setMaximumDate(dt.addDays(30).date());
-	
+
+	isBook = false;
+
 	connect(ui.dateText,SIGNAL(dateTextClick()),this,SLOT(findClick()));
 	connect(ui.calendarWidget,SIGNAL(clicked(const QDate&)),this,SLOT(dateClicked(const QDate&)));
 	connect(ui.query,SIGNAL(clicked()),this,SLOT(queryClicked()));
+	connect(ui.tabWidget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 }
 
 QString csAir::toEng(int i){
@@ -73,15 +79,15 @@ void csAir::queryClicked(){
 	}
 	QWidget* tab = new QWidget();
 	tab->setObjectName(QString::fromUtf8("tab"));
-	QTableWidget* tableWidget = new QTableWidget(tab);
+	tableWidget = new QTableWidget(tab);
 	QDomElement e;
 	int count = 0;
 	QTableWidgetItem *col1 = new QTableWidgetItem("航班号");
 	QTableWidgetItem *col2 = new QTableWidgetItem("出发/抵达时间");
 	QTableWidgetItem *col3 = new QTableWidgetItem("飞机型号");
-	QTableWidgetItem *col4 = new QTableWidgetItem("头等舱");
-	QTableWidgetItem *col5 = new QTableWidgetItem("商务舱");
-	QTableWidgetItem *col6 = new QTableWidgetItem("经济舱");
+	QTableWidgetItem *col4 = new QTableWidgetItem("头等舱(￥)");
+	QTableWidgetItem *col5 = new QTableWidgetItem("商务舱(￥)");
+	QTableWidgetItem *col6 = new QTableWidgetItem("经济舱(￥)");
 	tableWidget->setColumnCount(6);
 	tableWidget->setRowCount(8);
 	tableWidget->setHorizontalHeaderItem(0, col1);
@@ -95,11 +101,17 @@ void csAir::queryClicked(){
 		QTableWidgetItem *row = new QTableWidgetItem();
 		tableWidget->setVerticalHeaderItem(count,row);
 		QTableWidgetItem *ID = new QTableWidgetItem(e.attribute("ID"));
+		//ID->setFlags(Qt::ItemIsEnabled);
 		QTableWidgetItem *dat = new QTableWidgetItem(e.attribute("depTime") + " / " + e.attribute("arrTime"));
+		//dat->setFlags(Qt::ItemIsEnabled);
 		QTableWidgetItem *plane = new QTableWidgetItem(e.attribute("plane"));
+		//plane->setFlags(Qt::ItemIsEnabled);
 		QTableWidgetItem *A = new QTableWidgetItem(e.firstChildElement().attribute("price"));
 		QTableWidgetItem *B = new QTableWidgetItem(e.firstChildElement().nextSiblingElement().attribute("price"));
 		QTableWidgetItem *C = new QTableWidgetItem(e.lastChildElement().attribute("price"));
+		A->setCheckState(Qt::Unchecked);
+		B->setCheckState(Qt::Unchecked);
+		C->setCheckState(Qt::Unchecked);
 		tableWidget->setItem(count, 0, ID);
 		tableWidget->setItem(count, 1, dat);
 		tableWidget->setItem(count, 2, plane);
@@ -113,10 +125,55 @@ void csAir::queryClicked(){
 	tableWidget->setAutoScrollMargin(16);
 	tableWidget->setIconSize(QSize(0, 0));
 	tableWidget->setSortingEnabled(false);
-	ui.tabWidget->addTab(tab, ui.calendarWidget->selectedDate().toString("yyyy-MM-dd"));
-	ui.tabWidget->setCurrentIndex(ui.tabWidget->currentIndex() + 1);
+	tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+	tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
+	tableWidget->verticalHeader()->setVisible(false);
+
+	int index = ui.tabWidget->addTab(tab, ui.depart->currentText() + " -> " + ui.arrive->currentText() + "  " + ui.calendarWidget->selectedDate().toString("yyyy-MM-dd"));
+	ui.tabWidget->setCurrentIndex(index);
+
+	//connect(tableWidget, SIGNAL(cellChanged(int, int)), this, SLOT(booked(int, int)));
+	connect(tableWidget, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(booked(QTableWidgetItem*)));
 }
-	
+
+void csAir::booked(QTableWidgetItem* item){
+	/*
+	if(tableWidget->item(row,column)->checkState() == Qt::Unchecked)isBook = false;
+	else if(!isBook){
+		isBook = true;
+		bookedItem = tableWidget->item(row,column);
+	}
+	else {
+		bookedItem->setCheckState(Qt::Unchecked);
+		bookedItem = tableWidget->item(row,column);
+		isBook = true;
+	}
+	*/
+	if(item->checkState() == Qt::Unchecked)isBook = false;
+	else if(!isBook){
+		isBook = true;
+		bookedItem = item;
+	}
+	else {
+		bookedItem->setCheckState(Qt::Unchecked);
+		bookedItem = item;
+		isBook = true;
+		}
+}
+
+void csAir::tabChanged(int index){
+	if(isBook){
+		bookedItem->setCheckState(Qt::Unchecked);
+		isBook = false;
+	}
+}
+/*
+void csAir::test(QTableWidgetItem*){
+	QMessageBox m;
+	m.setText("!!!");
+	m.exec();
+}
+*/
 /*
 csAir::~csAir()
 {
