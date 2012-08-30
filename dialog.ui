@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>342</width>
+    <height>418</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>航班预订信息确认</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>301</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>航班信息</string>
+   </property>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>60</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>抵达时间</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>出发城市</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>120</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>飞机型号</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>出发时间</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>30</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>抵达城市</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>120</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>航班号码</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>舱位等级</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>150</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>乘客配额</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>出发日期</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>90</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>航程需时</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>可选余额</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>180</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>机票价格</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="depc">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>30</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="dept">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="depd">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>90</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ID">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>120</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="cabin">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>150</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="remain">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>180</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="arrc">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>30</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="arrt">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>60</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="totalt">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>90</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="plane">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>120</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="quota">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>150</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="price">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>180</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>240</y>
+     <width>291</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>旅客信息</string>
+   </property>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>31</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>姓名</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>证件号</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>54</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>手机号</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>30</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>60</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_3">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>90</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="ok">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>380</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>确认</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>380</y>
+     <width>61</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

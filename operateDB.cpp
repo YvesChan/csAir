@@ -105,13 +105,13 @@ bool createDB(QString date){
 				totalTime.appendChild(doc.createTextNode(QString::number(totalt) + " hours"));
 				plane.appendChild(doc.createTextNode(planes[rand() % 4]));
 				*/
-				for(int l = 0; l < 3; l ++){
+				for(int m = 0; m < 3; m ++){
 					cabin = doc.createElement("cabin");
 					flight.appendChild(cabin);
-					cabin.setAttribute("name", cab[l][0]);
-					cabin.setAttribute("price", QString::number(int(pri * cab[l][1].toFloat())));
-					cabin.setAttribute("quota", cab[1][2]);
-					cabin.setAttribute("remain", cab[1][2]);
+					cabin.setAttribute("name", cab[m][0]);
+					cabin.setAttribute("price", QString::number(int(pri * cab[m][1].toFloat())));
+					cabin.setAttribute("quota", cab[m][2]);
+					cabin.setAttribute("remain", cab[m][2]);
 					/*
 					price = doc.createElement("price");
 					quota = doc.createElement("quota");
@@ -136,7 +136,7 @@ bool createDB(QString date){
 	return true;
 }
 
-//API for query datebase
+//API for query datebase, return a DOM tree's pointer.
 bool queryDB(const QString &dep, const QString &arr, const QDate &date, QDomElement* &elem){
 	QDomDocument doc;
 	QFile file("Resources\\" + date.toString("yyyy-MM-dd") + ".xml");
@@ -144,10 +144,11 @@ bool queryDB(const QString &dep, const QString &arr, const QDate &date, QDomElem
 	if(!doc.setContent(&file))return false;
 	QDomNode root = doc.documentElement();
 	QDomElement ret;
-	//search for the goal flights and return the DOM subtree as a parameter
+	//search for the goal flights , create a DOM subtree in heap and return its pointer as a parameter
 	for(ret = root.firstChildElement(); ret.attribute("name") != dep; ret = ret.nextSiblingElement());
 	for(ret = ret.firstChildElement(); ret.attribute("name") != arr; ret = ret.nextSiblingElement());
 	if(ret.isNull())return false;
 	elem = new QDomElement(ret);
+	file.close();
 	return true;
 }
