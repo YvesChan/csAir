@@ -1,5 +1,6 @@
 #include "csair.h"
 #include "dialog.h"
+#include "manage.h"
 #include <QtGui/QMainWindow>
 #include <QDateTime>
 #include "operateDB.h"
@@ -20,6 +21,7 @@ csAir::csAir(QWidget *parent, Qt::WFlags flags)
 	ui.calendarWidget->setVisible(false);
 	date = ui.calendarWidget->selectedDate().toString("yyyy-MM-dd");
 	ui.dateText->setText(date);
+	//ui.calendarWidget->setGeometry(QRect(this->pos().x() + 220, this->pos().y() + 30, 241, 171));
 
 	QDate d;
 	QDateTime dt;
@@ -34,6 +36,7 @@ csAir::csAir(QWidget *parent, Qt::WFlags flags)
 	connect(ui.query,SIGNAL(clicked()),this,SLOT(queryClicked()));
 	connect(ui.tabWidget,SIGNAL(currentChanged(int)),this,SLOT(tabChanged(int)));
 	connect(ui.book,SIGNAL(clicked()),this,SLOT(bookClicked()));
+	connect(ui.manage,SIGNAL(clicked()),this,SLOT(manageClicked()));
 }
 
 QString csAir::toEng(int i){
@@ -52,11 +55,14 @@ QString csAir::toEng(int i){
 
 
 void csAir::findClick(){
+	ui.calendarWidget->setWindowFlags(Qt::Popup);
+	ui.calendarWidget->setGeometry(QRect(this->pos().x() + 230, this->pos().y() + 60, 241, 171));
 	ui.calendarWidget->setVisible(true);
+	
 }
 
 void csAir::dateClicked(const QDate &date){
-	ui.dateText->setText(QString::number(date.year()) + "-" + QString::number(date.month()) + "-" + QString::number(date.day()));
+	ui.dateText->setText(date.toString("yyyy-MM-dd"));
 	ui.calendarWidget->setVisible(false);
 }
 
@@ -68,7 +74,7 @@ void csAir::queryClicked(){
 		msg.exec();
 		return;
 	}
-	if(ui.arrive->currentIndex() == 0){
+	if(ui.arrive->currentIndex() == 0 || ui.arrive->currentIndex() == ui.depart->currentIndex()){
 		QMessageBox msg;
 		msg.setText("请选择抵达城市");
 		msg.exec();
@@ -122,7 +128,7 @@ void csAir::queryClicked(){
 		tableWidget->setItem(count, 5, C);
 	}
 
-	tableWidget->setGeometry(QRect(0, 0, 611, 301));
+	tableWidget->setGeometry(QRect(0, 0, 621, 301));
 	tableWidget->setLineWidth(1);
 	tableWidget->setAutoScrollMargin(16);
 	tableWidget->setIconSize(QSize(0, 0));
@@ -187,6 +193,11 @@ void csAir::bookClicked(){
 	}
 	BookDialog* d = new BookDialog(this);
 	d->show();
+}
+
+void csAir::manageClicked(){
+	Manager* m = new Manager(this);
+	m->show();
 }
 /*
 void csAir::test(QTableWidgetItem*){

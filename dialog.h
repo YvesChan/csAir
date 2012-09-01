@@ -11,9 +11,14 @@ class BookDialog : public QDialog
 
 public:
 	BookDialog(csAir* parent);
+	QString toEng(QString);
+
+	private slots:
+		void costChanged(int);
+		void bookConfirm();
 
 private:
-	Ui::Dialog ui;
+	Ui::BDialog ui;
 
 };
 

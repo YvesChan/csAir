@@ -33,6 +33,7 @@ signals:
 		void booked(QTableWidgetItem*);
 		void tabChanged(int index);
 		void bookClicked();
+		void manageClicked();
 		//void test(QTableWidgetItem*);
 
 private:

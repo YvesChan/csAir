@@ -9,6 +9,7 @@
 #include <QFileInfo>
 #include <QDebug>
 #include "operateDB.h"
+#include <QStringList>
 
 using namespace std;
 
@@ -25,6 +26,22 @@ bool updateDB(){
 		if(dbfile.exists())continue;     //check if data file existed
 		else if(!createDB(date))return false;
 	}
+
+	dbfile.setFile("Resources\\userDB.xml");
+	if(!dbfile.exists()){
+		QFile file("Resources\\userDB.xml");
+		if(!file.open(QFile::WriteOnly | QFile::Text))return false;
+		QDomDocument doc;
+		QDomProcessingInstruction instruction;
+		instruction = doc.createProcessingInstruction("xml","version=\"1.0\"");
+		doc.appendChild(instruction);
+		QDomElement root = doc.createElement("userIndex");
+		doc.appendChild(root);
+		QTextStream out(&file);
+		doc.save(out,4);
+		file.close();
+	}
+
 	return true;
 }
 
@@ -152,3 +169,81 @@ bool queryDB(const QString &dep, const QString &arr, const QDate &date, QDomElem
 	file.close();
 	return true;
 }
+
+//modify the flight information (modify cabin's remain tickets or specific tag's value)
+//if tag = remain, then value is the variable (include positive or negative number)
+bool editDB(QString depc, QString arrc, QString date, QString ID, QString tag, QString value, QString cabin = ""){
+	QDomDocument doc;
+	QFile file("Resources\\" + date + ".xml");
+	if(!file.open(QFile::ReadOnly))return false;
+	if(!doc.setContent(&file))return false;
+
+	QDomElement elem = doc.documentElement();
+	for(elem = elem.firstChildElement(); !elem.isNull() && elem.attribute("name") != depc; elem = elem.nextSiblingElement());
+	for(elem = elem.firstChildElement(); !elem.isNull() && elem.attribute("name") != arrc; elem = elem.nextSiblingElement());
+	for(elem = elem.firstChildElement(); !elem.isNull() && elem.attribute("ID") != ID; elem = elem.nextSiblingElement());
+	if(elem.isNull())return false;
+	if(cabin == "")elem.setAttribute(tag, value);
+	else {
+		for(elem = elem.firstChildElement(); !elem.isNull() && elem.attribute("name") != cabin; elem = elem.nextSiblingElement());
+		if(tag == "remain"){         //number variable is passed 
+			int curr = elem.attribute("remain").toInt();
+			elem.setAttribute("remain", curr + value.toInt());
+		}
+		else elem.setAttribute(tag, value);
+	}
+	file.close();
+	if(!file.open(QFile::WriteOnly | QFile::Truncate))return false;
+	QTextStream out(&file);
+	doc.save(out,4);
+	file.close();
+	return true;
+}
+
+//create and maintain USER information database
+//parameter flyInfo contains: "depcity arrcity date flightID cabin"
+bool manageUserDB(const QString &name, const QString &identy, const QString &num, int amount, const QString &flyInfo){
+	QDomDocument doc;
+	QFile file("Resources\\userDB.xml");
+	if(!file.open(QFile::ReadOnly))return false;
+	if(!doc.setContent(&file))return false;
+	QStringList info = flyInfo.split(" ");
+
+	QDomElement root = doc.documentElement();
+	QDomElement elem;
+	//judge if exist the same flight
+	for(elem = root.firstChildElement(); !elem.isNull(); elem = elem.nextSiblingElement())
+		if(elem.attribute("identy") == identy && elem.attribute("ID") == info[3]){
+			elem.setAttribute("amount", elem.attribute("amount").toInt() + amount);
+			break;
+		}
+	if(elem.isNull()){
+		elem = doc.createElement("passenger");
+		root.appendChild(elem);
+		elem.setAttribute("name", name);
+		elem.setAttribute("identy", identy);
+		elem.setAttribute("number", num);
+		elem.setAttribute("ID", info[3]);
+		elem.setAttribute("cabin", info[4]);
+		elem.setAttribute("amount", amount);
+		elem.setAttribute("depCity", info[0]);
+		elem.setAttribute("arrCity", info[1]);
+		elem.setAttribute("date", info[2]);
+	}
+
+	file.close();
+	if(!file.open(QFile::WriteOnly | QFile::Truncate))return false;
+	QTextStream out(&file);
+	doc.save(out,4);
+	file.close();
+	return true;
+}
+
+//maintain USER information database (return tickets)
+/*
+bool manageUserDB(const QString &name, const QString &identy, QDomDocument* &doc){
+	QFile file("Resources\\userDB.xml");
+	if(!file.open(QFile::ReadOnly))return false;
+	if(!doc.setContent(&file))return false;
+	QDomElement root = doc.documentElement();
+	*/
