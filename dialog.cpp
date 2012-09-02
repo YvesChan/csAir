@@ -72,6 +72,8 @@ void BookDialog::costChanged(int value){
 
 void BookDialog::bookConfirm(){
 	QMessageBox m;
+	if(ui.name->text() == ""){m.setText("请输入旅客姓名"); m.exec(); return;}
+	if(ui.identy->text() == ""){m.setText("请输入证件号"); m.exec(); return;}
 	if(ui.amount->value() == 0){m.setText("请输入订票量"); m.exec(); return;}
 	if(editDB(toEng(ui.depc->text()),toEng(ui.arrc->text()),ui.depd->text(),ui.ID->text(),"remain",QString::number(-(ui.amount->value())),ui.cabin->text()) 
 		&& manageUserDB(ui.name->text(), ui.identy->text(), ui.number->text(), ui.amount->value(), toEng(ui.depc->text()) + " " + toEng(ui.arrc->text()) + " " + ui.depd->text() + " " + ui.ID->text() + " " + ui.cabin->text()))m.setText("预订成功");

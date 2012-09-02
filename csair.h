@@ -34,7 +34,6 @@ signals:
 		void tabChanged(int index);
 		void bookClicked();
 		void manageClicked();
-		//void test(QTableWidgetItem*);
 
 private:
 	Ui::csAirClass ui;
@@ -47,16 +46,6 @@ private:
 	//QTableWidget* tableWidget;
 	QDomElement* elem[30];
 };
-/*
-class grid : public QWidget
-{
-	Q_OBJECT
 
-public:
-	grid(QString);
-
-signals:
-	void radioClicked();
-	*/
 
 #endif // CSAIR_H

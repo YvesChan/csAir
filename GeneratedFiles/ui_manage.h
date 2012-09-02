@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'manage.ui'
 **
-** Created: Sun Sep 2 01:12:25 2012
+** Created: Sun Sep 2 21:22:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -38,6 +38,8 @@ public:
         if (MDialog->objectName().isEmpty())
             MDialog->setObjectName(QString::fromUtf8("MDialog"));
         MDialog->resize(419, 245);
+        MDialog->setMinimumSize(QSize(419, 245));
+        MDialog->setMaximumSize(QSize(419, 245));
         name = new QLineEdit(MDialog);
         name->setObjectName(QString::fromUtf8("name"));
         name->setGeometry(QRect(50, 10, 81, 20));

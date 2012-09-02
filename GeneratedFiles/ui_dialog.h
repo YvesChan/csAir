@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog.ui'
 **
-** Created: Sun Sep 2 01:12:25 2012
+** Created: Sun Sep 2 21:22:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -71,6 +71,8 @@ public:
         if (BDialog->objectName().isEmpty())
             BDialog->setObjectName(QString::fromUtf8("BDialog"));
         BDialog->resize(361, 418);
+        BDialog->setMinimumSize(QSize(361, 418));
+        BDialog->setMaximumSize(QSize(361, 418));
         groupBox = new QGroupBox(BDialog);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(20, 10, 321, 211));

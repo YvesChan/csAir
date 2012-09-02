@@ -10,11 +10,16 @@
 #include <QDebug>
 #include "operateDB.h"
 #include <QStringList>
+#include <QDir>
 
 using namespace std;
 
 //update the whole database in 30 days from today
 bool updateDB(){
+	//if not exist root directory then create
+	QDir dbdir(".");
+	dbdir.mkdir("Resources");
+
 	QDateTime dt;
 	QDate d;
 	dt.setDate(d.currentDate());   //get current date
@@ -27,6 +32,7 @@ bool updateDB(){
 		else if(!createDB(date))return false;
 	}
 
+	//create user data file
 	dbfile.setFile("Resources\\userDB.xml");
 	if(!dbfile.exists()){
 		QFile file("Resources\\userDB.xml");
@@ -238,12 +244,3 @@ bool manageUserDB(const QString &name, const QString &identy, const QString &num
 	file.close();
 	return true;
 }
-
-//maintain USER information database (return tickets)
-/*
-bool manageUserDB(const QString &name, const QString &identy, QDomDocument* &doc){
-	QFile file("Resources\\userDB.xml");
-	if(!file.open(QFile::ReadOnly))return false;
-	if(!doc.setContent(&file))return false;
-	QDomElement root = doc.documentElement();
-	*/

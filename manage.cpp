@@ -58,9 +58,14 @@ void Manager::searchClicked(){
 		return;
 	} 
 
+	//clear the table view before display new information
+	while(ui.tableWidget->rowCount() != 0)
+		ui.tableWidget->removeRow(0);
+
 	int row = 0;
 	bool find = false;
 	QDomElement elem = doc.documentElement();
+	//use 
 	for(elem = elem.firstChildElement(); !elem.isNull(); elem = elem.nextSiblingElement()){
 		if(elem.attribute("name") == ui.name->text() && elem.attribute("identy") == ui.identy->text()){
 			find = true;
@@ -111,12 +116,10 @@ void Manager::returnClicked(){
 			if(elem.attribute("ID") == ID && elem.attribute("identy") == ui.identy->text()){
 				if(retNum == currAmo){          //return all tickets of the flight
 					root.removeChild(elem);      //delete information from database file
-					ui.tableWidget->removeRow(clickRow);       //change table view
 				}
 				else {               //only modify information in table view and database
 					elem.setAttribute("amount", currAmo - retNum);
-					item->setText(QString::number(currAmo - retNum));
-					qDebug() << elem.attribute("amount");
+					//qDebug() << elem.attribute("amount");
 				}
 				break;
 			}
@@ -140,6 +143,10 @@ void Manager::returnClicked(){
 				QMessageBox::information(this, "csAir", "无法写入系统数据");
 				return;
 		}
+
+		//change table view or delete the whole row
+		if(retNum == currAmo)ui.tableWidget->removeRow(clickRow);
+		else item->setText(QString::number(currAmo - retNum));
 
 		QMessageBox::information(this, "csAir", "退票成功");
 	}

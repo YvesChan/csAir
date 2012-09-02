@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'csair.ui'
 **
-** Created: Sun Sep 2 01:12:25 2012
+** Created: Sun Sep 2 21:22:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -51,6 +51,8 @@ public:
             csAirClass->setObjectName(QString::fromUtf8("csAirClass"));
         csAirClass->setEnabled(true);
         csAirClass->resize(611, 394);
+        csAirClass->setMinimumSize(QSize(611, 394));
+        csAirClass->setMaximumSize(QSize(611, 394));
         centralWidget = new QWidget(csAirClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         label = new QLabel(centralWidget);
@@ -135,7 +137,7 @@ public:
 
     void retranslateUi(QMainWindow *csAirClass)
     {
-        csAirClass->setWindowTitle(QApplication::translate("csAirClass", "csAir", 0, QApplication::UnicodeUTF8));
+        csAirClass->setWindowTitle(QApplication::translate("csAirClass", "\345\215\227\350\210\252\350\256\242\347\245\250\347\263\273\347\273\237\345\256\242\346\210\267\347\253\257", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("csAirClass", "\345\207\272\345\217\221\345\237\216\345\270\202", 0, QApplication::UnicodeUTF8));
         depart->clear();
         depart->insertItems(0, QStringList()

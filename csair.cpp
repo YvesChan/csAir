@@ -15,7 +15,9 @@
 csAir::csAir(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
 {
-	updateDB();      //automatically update database while program start
+	//automatically update database while program start
+	if(!updateDB())QMessageBox::information(this, "csAir", "更新数据库失败");
+	else QMessageBox::information(this, "csAir", "更新数据库成功");
 
 	ui.setupUi(this);
 	ui.calendarWidget->setVisible(false);
@@ -199,13 +201,7 @@ void csAir::manageClicked(){
 	Manager* m = new Manager(this);
 	m->show();
 }
-/*
-void csAir::test(QTableWidgetItem*){
-	QMessageBox m;
-	m.setText("!!!");
-	m.exec();
-}
-*/
+
 /*
 csAir::~csAir()
 {

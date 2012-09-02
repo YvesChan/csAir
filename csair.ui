@@ -13,8 +13,20 @@
     <height>394</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>611</width>
+    <height>394</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>611</width>
+    <height>394</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>csAir</string>
+   <string>南航订票系统客户端</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="label">
