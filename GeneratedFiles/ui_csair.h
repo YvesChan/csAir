@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'csair.ui'
 **
-** Created: Sun Sep 2 21:22:16 2012
+** Created: Wed Sep 5 09:39:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -43,6 +43,7 @@ public:
     QTabWidget *tabWidget;
     QPushButton *book;
     QPushButton *manage;
+    QLabel *label_4;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *csAirClass)
@@ -109,6 +110,10 @@ public:
         manage = new QPushButton(centralWidget);
         manage->setObjectName(QString::fromUtf8("manage"));
         manage->setGeometry(QRect(540, 10, 61, 31));
+        label_4 = new QLabel(centralWidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(0, 50, 611, 321));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/csAir/Resources/bgpic.png")));
         csAirClass->setCentralWidget(centralWidget);
         label->raise();
         depart->raise();
@@ -118,9 +123,10 @@ public:
         dateText->raise();
         query->raise();
         tabWidget->raise();
-        calendarWidget->raise();
         book->raise();
         manage->raise();
+        label_4->raise();
+        calendarWidget->raise();
         statusBar = new QStatusBar(csAirClass);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
         csAirClass->setStatusBar(statusBar);
@@ -172,6 +178,7 @@ public:
         query->setText(QApplication::translate("csAirClass", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));
         book->setText(QApplication::translate("csAirClass", "\351\242\204\350\256\242", 0, QApplication::UnicodeUTF8));
         manage->setText(QApplication::translate("csAirClass", "\347\256\241\347\220\206", 0, QApplication::UnicodeUTF8));
+        label_4->setText(QString());
     } // retranslateUi
 
 };

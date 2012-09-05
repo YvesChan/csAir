@@ -99,7 +99,7 @@ void Manager::searchClicked(){
 }
 
 void Manager::returnClicked(){
-	QPushButton* sender = qobject_cast<QPushButton *>(QObject::sender());
+	QPushButton* sender = qobject_cast<QPushButton *>(QObject::sender());    //pointer type cast
 	if(sender == NULL)return;
 	QModelIndex mindex = ui.tableWidget->indexAt(QPoint(sender->frameGeometry().x(), sender->frameGeometry().y()));
 	int clickRow = mindex.row();

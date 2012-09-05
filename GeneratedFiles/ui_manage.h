@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'manage.ui'
 **
-** Created: Sun Sep 2 21:22:16 2012
+** Created: Wed Sep 5 09:39:17 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -84,7 +84,7 @@ public:
 
     void retranslateUi(QDialog *MDialog)
     {
-        MDialog->setWindowTitle(QApplication::translate("MDialog", "Dialog", 0, QApplication::UnicodeUTF8));
+        MDialog->setWindowTitle(QApplication::translate("MDialog", "\344\270\252\344\272\272\350\256\242\345\215\225\347\256\241\347\220\206", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MDialog", "\345\247\223\345\220\215", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MDialog", "\350\257\201\344\273\266\345\217\267", 0, QApplication::UnicodeUTF8));
         search->setText(QApplication::translate("MDialog", "\346\237\245\350\257\242", 0, QApplication::UnicodeUTF8));

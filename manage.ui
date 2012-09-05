@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>个人订单管理</string>
   </property>
   <widget class="QLineEdit" name="name">
    <property name="geometry">

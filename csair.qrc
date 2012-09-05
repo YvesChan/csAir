@@ -1,3 +1,5 @@
 <RCC>
-  <qresource prefix="csAir"/>
+  <qresource prefix="csAir">
+    <file>Resources/bgpic.png</file>
+  </qresource>
 </RCC>

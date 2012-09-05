@@ -89,6 +89,7 @@ void csAir::queryClicked(){
 		return;
 	}
 	//create new tab and table
+	ui.label_4->setVisible(false);
 	QWidget* tab = new QWidget();
 	tab->setObjectName(QString::fromUtf8("tab"));
 	QTableWidget* tableWidget = new QTableWidget(tab);
@@ -147,6 +148,7 @@ void csAir::queryClicked(){
 	connect(tableWidget, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(booked(QTableWidgetItem*)));
 }
 
+//checkbox use as radio button
 void csAir::booked(QTableWidgetItem* item){
 	/*
 	if(tableWidget->item(row,column)->checkState() == Qt::Unchecked)isBook = false;

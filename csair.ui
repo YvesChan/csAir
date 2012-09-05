@@ -342,6 +342,22 @@
      <string>管理</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>611</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="csair.qrc">:/csAir/Resources/bgpic.png</pixmap>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>depart</zorder>
    <zorder>label_2</zorder>
@@ -350,9 +366,10 @@
    <zorder>dateText</zorder>
    <zorder>query</zorder>
    <zorder>tabWidget</zorder>
-   <zorder>calendarWidget</zorder>
    <zorder>book</zorder>
    <zorder>manage</zorder>
+   <zorder>label_4</zorder>
+   <zorder>calendarWidget</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
